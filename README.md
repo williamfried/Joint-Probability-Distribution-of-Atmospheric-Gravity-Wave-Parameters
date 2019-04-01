@@ -6,21 +6,21 @@ Python:
 https://www.weather.gov/upperair/nws_upper 
 https://www.sparc-climate.org/data-centre/data-access/us-radiosonde/us-upper-air-station-details/
 3. Insert the WBAN numbers corresponding to the chosen upper air stations in the _stations_ list in _station_info.py_.
-4. Look up the latitude corresponding to each upper air station and insert these values into the "latitudes" list in "station_info.py". Make sure the latitudes line up with the corresponding stations.
-5. Specify the path to the folder where you want to store the raw radiosonde data in the "path_to_radiosonde_data" variable in "station_info.py". 
-6. Specify the path to the folder where you want to store the inferred gravity wave parameters in the "path_to_csv_files" variable in "station_info.py". 
-7. Run "FTP.py" for each upper air station. This retrieves and unzip the radiosonde data from 1998-2008 and stores each sounding as a DAT file in the "path_to_radiosonde_data" folder. 
-8. Run "clean.py" for each upper air station. This iterates through all the DAT files and removes files that don't meet specifications (see "Clearning Data" section in report for more details on the criteria that are used for removing DAT files). 
-9. Run "execute_inference.py" for each upper air station. This infers the gravity wave parameters for each radiosonde soundings and stores these quantities in a massive dictionary.
-10. Run "exploration.py" to explore how the inferred gravity wave parameters vary on a sounding-to-sounding basis as well as by time of day (see "Sounding-to-sounding Variation" and "Variation by Time of Day" sections in report for more details). 
-11. Run "export_to_R.py" to transfer the inferred gravity wave paramters into CSV files that can be imported into R. These CSV files are stored in the "path_to_csv_files" folder. Four types of CSV files are created: one type contains all the gravity wave parameters from all the stations, while the other three types consist of the gravity wave parameters separated by year, month and station.
+4. Look up the latitude corresponding to each upper air station and insert these values into the "latitudes" list in _station_info.py_. Make sure the latitudes line up with the corresponding stations.
+5. Specify the path to the folder where you want to store the raw radiosonde data in the _path_to_radiosonde_data_ variable in _station_info.py_. 
+6. Specify the path to the folder where you want to store the inferred gravity wave parameters in the "path_to_csv_files" variable in _station_info.py_. 
+7. Run _FTP.py_ for each upper air station. This retrieves and unzip the radiosonde data from 1998-2008 and stores each sounding as a DAT file in the _path_to_radiosonde_data_ folder. 
+8. Run _clean.py_ for each upper air station. This iterates through all the DAT files and removes files that don't meet specifications (see _Clearning Data_ section in report for more details on the criteria that are used for removing DAT files). 
+9. Run _execute_inference.py_ for each upper air station. This infers the gravity wave parameters for each radiosonde soundings and stores these quantities in a massive dictionary.
+10. Run _exploration.py_ to explore how the inferred gravity wave parameters vary on a sounding-to-sounding basis as well as by time of day (see _Sounding-to-sounding Variation_ and _Variation by Time of Day_ sections in report for more details). 
+11. Run _export_to_R.py_ to transfer the inferred gravity wave paramters into CSV files that can be imported into R. These CSV files are stored in the _path_to_csv_files_ folder. Four types of CSV files are created: one type contains all the gravity wave parameters from all the stations, while the other three types consist of the gravity wave parameters separated by year, month and station.
 
 R:
-1. Define the "path_to_data" variable in "explore.R" to be the same as "path_to_csv_files". 
-2. Define the "station_names" variable in "explore_functions.R" to be the same as the "stations" list. Make sure that the radiosonde stations are listed in the same order as they are in the "stations" list!
-3. Run the "explore" function in "explore.R" to confirm that the assumptions described in the report in the "Overall Structure", "Variation by Radiosonde Station", "Variation by Year" and "Variation by Month" sections are accurate. 
-4. Insert the name of the CSV file that contains the data that will be used to construct the joint probability distribution as the argument of the "import" function in "modeling steps.R". The name of this CSV file should be one of: "all.csv", "summer.csv" and "winter.csv". 
-5. Run "modeling_steps.R". This will perform the following steps:
+1. Define the _path_to_data_ variable in _explore.R_ to be the same as _path_to_csv_files_. 
+2. Define the _station_names_ variable in _explore_functions.R_ to be the same as the _stations_ list. Make sure that the radiosonde stations are listed in the same order as they are in the _stations_ list!
+3. Run the _explore_ function in _explore.R_ to confirm that the assumptions described in the report in the _Overall Structure_, _Variation by Radiosonde Station_, _Variation by Year_ and _Variation by Month_ sections are accurate. 
+4. Insert the name of the CSV file that contains the data that will be used to construct the joint probability distribution as the argument of the _import_ function in _modeling steps.R_. The name of this CSV file should be one of: _all.csv_, _summer.csv_ and _winter.csv_. 
+5. Run _modeling_steps.R_. This will perform the following steps:
   * Import and organize data from CSV file.
   * Model marginal distributions of seven gravity wave parameters.
   * Create copula and optimize correlation coefficients using coordinate descent algorithm. (Note: this step can take over an hour to run depending on the amount of data in the CSV file.)
