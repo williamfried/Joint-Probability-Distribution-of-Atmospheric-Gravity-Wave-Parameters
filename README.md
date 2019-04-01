@@ -21,13 +21,13 @@ R:
 3. Run the "explore" function in "explore.R" to confirm that the assumptions described in the report in the "Overall Structure", "Variation by Radiosonde Station", "Variation by Year" and "Variation by Month" sections are accurate. 
 4. Insert the name of the CSV file that contains the data that will be used to construct the joint probability distribution as the argument of the "import" function in "modeling steps.R". The name of this CSV file should be one of: "all.csv", "summer.csv" and "winter.csv". 
 5. Run "modeling_steps.R". This will perform the following steps:
-  a. Import and organize data from CSV file.
-  b. Model marginal distributions of seven gravity wave parameters.
-  c. Create copula and optimize correlation coefficients using coordinate descent algorithm. (Note: this step can take over an hour to run depending on the amount of data in the CSV file.)
-  d. Perform cross-validation to determine optimal number of intervals for determining the conditonal frequency distribution.
-  e. Calculate the AIC corresponding to each of the following three models of increasing complexity:
+  1. Import and organize data from CSV file.
+  2. Model marginal distributions of seven gravity wave parameters.
+  3. Create copula and optimize correlation coefficients using coordinate descent algorithm. (Note: this step can take over an hour to run depending on the amount of data in the CSV file.)
+  4. Perform cross-validation to determine optimal number of intervals for determining the conditonal frequency distribution.
+  5. Calculate the AIC corresponding to each of the following three models of increasing complexity:
     i.  Models all 7 gravity wave parameters independently of each other.
     ii. Models the joint distribution of all gravity wave parameters except for frequency using a copula and independently models frequency. 
     iii. Models the joint distribution of all gravity wave parameters except for frequency using a copula and models the frequency by conditioning on the zonal and meridional wavelengths. 
-  f. Draw sample of given size from the joint probability distribution and compare these samples to the empirical marginal distributions and correlation stuctures of the inferred gravity wave paramters. This sample is then stored in a CSV where it can be further analyzed.
+  6. Draw sample of given size from the joint probability distribution and compare these samples to the empirical marginal distributions and correlation stuctures of the inferred gravity wave paramters. This sample is then stored in a CSV where it can be further analyzed.
 
