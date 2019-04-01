@@ -26,8 +26,8 @@ R:
   * Create copula and optimize correlation coefficients using coordinate descent algorithm. (Note: this step can take over an hour to run depending on the amount of data in the CSV file.)
   * Perform cross-validation to determine optimal number of intervals for determining the conditonal frequency distribution.
   * Calculate the AIC corresponding to each of the following three models of increasing complexity:
-    i.  Models all 7 gravity wave parameters independently of each other.
-    ii. Models the joint distribution of all gravity wave parameters except for frequency using a copula and independently models frequency. 
-    iii. Models the joint distribution of all gravity wave parameters except for frequency using a copula and models the frequency by conditioning on the zonal and meridional wavelengths. 
+    1.  Models all 7 gravity wave parameters independently of each other.
+    2. Models the joint distribution of all gravity wave parameters except for frequency using a copula and independently models frequency. 
+    3. Models the joint distribution of all gravity wave parameters except for frequency using a copula and models the frequency by conditioning on the zonal and meridional wavelengths. 
   * Draw sample of given size from the joint probability distribution and compare these samples to the empirical marginal distributions and correlation stuctures of the inferred gravity wave paramters. This sample is then stored in a CSV where it can be further analyzed.
 
