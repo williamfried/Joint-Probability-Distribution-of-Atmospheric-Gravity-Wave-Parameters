@@ -1,7 +1,7 @@
 # Senior-Thesis
 
 Python:
-1. Decide on the geographical region where you want to gain information about the atmospheric gravity wave activity.
+1. Determine the geographical region for which you want to characterize the atmospheric gravity wave activity.
 2. Use the following two resources to determine which upper air stations are located within the given geographical region:
 https://www.weather.gov/upperair/nws_upper 
 https://www.sparc-climate.org/data-centre/data-access/us-radiosonde/us-upper-air-station-details/
