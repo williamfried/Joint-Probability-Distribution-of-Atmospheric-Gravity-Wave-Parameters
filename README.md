@@ -1,4 +1,5 @@
-# Senior-Thesis
+Perform the following steps to construct the joint probability distribution of the seven atmospheric gravity wave parameters.
+The data retrieval and inference steps are carried out in Python, and the modeling step is carried out in R. 
 
 Python:
 1. Determine the geographical region for which you want to characterize the atmospheric gravity wave activity.
