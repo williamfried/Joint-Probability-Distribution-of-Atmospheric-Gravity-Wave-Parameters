@@ -17,7 +17,17 @@ https://www.sparc-climate.org/data-centre/data-access/us-radiosonde/us-upper-air
 
 R:
 12. Define the "path_to_data" variable in "explore.R" to be the same as "path_to_csv_files". 
-13. Define the "station_names" variable in "explore.R" to be the same as the "stations" list. Make sure that the radiosonde stations are listed in the same order as they are in the "stations" list!
-14. 
+13. Define the "station_names" variable in "explore_functions.R" to be the same as the "stations" list. Make sure that the radiosonde stations are listed in the same order as they are in the "stations" list!
+14. Run the "explore" function in "explore.R" to confirm that the assumptions described in the report in the "Overall Structure", "Variation by Radiosonde Station", "Variation by Year" and "Variation by Month" sections are accurate. 
+15. Insert the name of the CSV file that contains the data that will be used to construct the joint probability distribution as the argument of the "import" function in "modeling steps.R". The name of this CSV file should be one of: "all.csv", "summer.csv" and "winter.csv". 
+16. Run "modeling_steps.R". This will perform the following steps:
+  a. Import and organize data from CSV file.
+  b. Model marginal distributions of seven gravity wave parameters.
+  c. Create copula and optimize correlation coefficients using coordinate descent algorithm. (Note: this step can take over an hour to run depending on the amount of data in the CSV file.)
+  d. Perform cross-validation to determine optimal number of intervals for determining the conditonal frequency distribution.
+  e. Calculate the AIC corresponding to each of the following three models of increasing complexity:
+    i.  Models all 7 gravity wave parameters independently of each other.
+    ii. Models the joint distribution of all gravity wave parameters except for frequency using a copula and independently models frequency. 
+    iii. Models the joint distribution of all gravity wave parameters except for frequency using a copula and models the frequency by conditioning on the zonal and meridional wavelengths. 
+  f. Draw sample of given size from the joint probability distribution and compare these samples to the empirical marginal distributions and correlation stuctures of the inferred gravity wave paramters. This sample is then stored in a CSV where it can be further analyzed.
 
-FTP.py to downl
