@@ -16,11 +16,11 @@ https://www.sparc-climate.org/data-centre/data-access/us-radiosonde/us-upper-air
 11. Run "export_to_R.py" to transfer the inferred gravity wave paramters into CSV files that can be imported into R. These CSV files are stored in the "path_to_csv_files" folder. Four types of CSV files are created: one type contains all the gravity wave parameters from all the stations, while the other three types consist of the gravity wave parameters separated by year, month and station.
 
 R:
-12. Define the "path_to_data" variable in "explore.R" to be the same as "path_to_csv_files". 
-13. Define the "station_names" variable in "explore_functions.R" to be the same as the "stations" list. Make sure that the radiosonde stations are listed in the same order as they are in the "stations" list!
-14. Run the "explore" function in "explore.R" to confirm that the assumptions described in the report in the "Overall Structure", "Variation by Radiosonde Station", "Variation by Year" and "Variation by Month" sections are accurate. 
-15. Insert the name of the CSV file that contains the data that will be used to construct the joint probability distribution as the argument of the "import" function in "modeling steps.R". The name of this CSV file should be one of: "all.csv", "summer.csv" and "winter.csv". 
-16. Run "modeling_steps.R". This will perform the following steps:
+1. Define the "path_to_data" variable in "explore.R" to be the same as "path_to_csv_files". 
+2. Define the "station_names" variable in "explore_functions.R" to be the same as the "stations" list. Make sure that the radiosonde stations are listed in the same order as they are in the "stations" list!
+3. Run the "explore" function in "explore.R" to confirm that the assumptions described in the report in the "Overall Structure", "Variation by Radiosonde Station", "Variation by Year" and "Variation by Month" sections are accurate. 
+4. Insert the name of the CSV file that contains the data that will be used to construct the joint probability distribution as the argument of the "import" function in "modeling steps.R". The name of this CSV file should be one of: "all.csv", "summer.csv" and "winter.csv". 
+5. Run "modeling_steps.R". This will perform the following steps:
   a. Import and organize data from CSV file.
   b. Model marginal distributions of seven gravity wave parameters.
   c. Create copula and optimize correlation coefficients using coordinate descent algorithm. (Note: this step can take over an hour to run depending on the amount of data in the CSV file.)
