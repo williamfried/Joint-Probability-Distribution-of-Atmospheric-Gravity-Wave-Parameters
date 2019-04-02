@@ -296,7 +296,7 @@ def temp_profile(filename):
 	a /= 1000
 
 	plt.scatter(t,a, s=1)
-	plt.xlabel('temperature (°C)')
+	plt.xlabel('temperature (C)')
 	plt.ylabel('altitude (km)')
 	plt.title('temperature as a function of altitude')
 	plt.axhline(y=a[np.argmin(t)], color = 'r', )

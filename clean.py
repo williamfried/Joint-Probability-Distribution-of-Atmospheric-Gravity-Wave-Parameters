@@ -3,8 +3,7 @@ import os
 from station_info import *
 from preprocessing import *
 import sys
-
-station_code = sys.argv[1]
+from multiprocessing import Pool
 
 # filter out soundings that either don't ascend to 25km or have too many missing values
 def clean(filename):
@@ -63,7 +62,7 @@ def undo(filename):
 
 	return(0)
 
-def clean_files():
+def clean_files(station_code):
 	path = path_to_radiosonde_data + station_code
 	os.chdir(path)
 	files = os.listdir(path)
@@ -75,7 +74,7 @@ def clean_files():
 
 	return(0)
 
-def undo_files():
+def undo_files(station_code):
 	path = path_to_radiosonde_data + station_code
 	os.chdir(path)
 	files = os.listdir(path)
@@ -85,16 +84,12 @@ def undo_files():
 		undo(filename)
 	return(0)
 
-def execute(action):
-	if action == 'clean':
-		clean_files()
-		return(0)
-	elif action == 'undo':
-		undo_files()
-		return(0)
-	else:
-		return('invalid selection')
+p = Pool()
+p.map(clean_files, stations)
 
-execute(sys.argv[2])
+
+
+
+
 
 
