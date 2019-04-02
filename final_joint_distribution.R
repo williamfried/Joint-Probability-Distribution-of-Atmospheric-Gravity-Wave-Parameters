@@ -1,6 +1,7 @@
 source('station_info.R')
 source('functions.R')
 library('gplots')
+setwd(path_to_data)
 
 quantities = c('vertical_wavelength','U_wavelength','V_wavelength', 'freq', 'U_amp','V_amp','T_amp')
 data_list = list(vert_wavelength, U_wavelength, V_wavelength, freq_shifted, U_amp, V_amp, T_amp)
@@ -35,7 +36,6 @@ sample_joint_distribution = function(n)
   
   for (i in 1:n)
   {
-    print(i)
     f = conditional_freq(1, paste(category(U_wavelength_rand[i], render_bins(optimal_bin_num, 'U')), category(V_wavelength_rand[i], render_bins(optimal_bin_num, 'V'))), both_conditional_list, 'random') 
     freq_shifted_rand[i] = f
   }
@@ -105,17 +105,11 @@ scatterplots = function(dataset)
   }
 }
 
-sample = sample_joint_distribution(dim(data)[2])
+sample = sample_joint_distribution(round((dim(data)[2])/200))
 marginals(sample)
 scatterplots(sample)
 
 # write sample from joint probability distribution to csv file
 write.table(sample, 'joint_distribution_sample.csv', sep=',', append=F, row.names=F)
-
-
-
-
-
-
 
 

@@ -28,10 +28,8 @@ cond_dist_both = function(U_parameter, V_parameter, frequency_train, U_intervals
   
   for (i in 1:(length(U_intervals)-1))
   {
-    #print(i)
     for (j in 1:(length(V_intervals)-1))
     {
-      #print(j)
       segment = frequency_train[between(U_parameter, U_intervals[i], U_intervals[i+1]) & between(V_parameter, V_intervals[j], V_intervals[j+1])]
       if (length(distributions) == 1)
       {
@@ -62,12 +60,14 @@ render_bins = function(bin_num, type)
   if (type == 'U')
   {
     U_wavelength_intervals = unname(quantile(U_wavelength, seq(0,1,length=bin_num+1)))
+    U_wavelength_intervals[1] = 0
     U_wavelength_intervals[bin_num+1] = U_wavelength_intervals[bin_num] + 10
     return(U_wavelength_intervals)
   }
   else if (type == 'V')
   {
     V_wavelength_intervals = unname(quantile(V_wavelength, seq(0,1,length=bin_num+1)))
+    V_wavelength_intervals[1] = 0
     V_wavelength_intervals[bin_num+1] = V_wavelength_intervals[bin_num] + 10
     return(V_wavelength_intervals)
   }
