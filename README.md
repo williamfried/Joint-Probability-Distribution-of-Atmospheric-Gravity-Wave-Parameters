@@ -14,7 +14,7 @@ https://www.sparc-climate.org/data-centre/data-access/us-radiosonde/us-upper-air
 7. Run _ftp.py_, which retrieves and unzips the radiosonde data from 1998-2008 and stores each sounding as a DAT file in the _path_to_radiosonde_data_ folder. This procedure is performed for all the radiosonde stations in parallel.
 8. Run _clean.py_, which iterates through all the DAT files and removes files that don't meet specifications (see _Clearning Data_ section in report for more details about the criteria that are used for removing DAT files). This procedure is performed for all the radiosonde stations in parallel.
 9. Run _execute_inference.py_, which infers the gravity wave parameters for each radiosonde sounding and stores these quantities in a massive dictionary. This procedure is performed for all the radiosonde stations in parallel.
-10. Run _exploration.py_ to to confirm that the assumptions described in the report in the _Sounding-to-sounding Variation_ and _Variation by Time of Day_ sections are valid. 
+10. Run _exploration.py_ to confirm that the assumptions described in the report in the _Sounding-to-sounding Variation_ and _Variation by Time of Day_ sections are valid. 
 11. Run _export_to_R.py_ to transfer the inferred gravity wave paramters into CSV files that can be imported into R. These CSV files are stored in the _path_to_csv_files_ folder. Four types of CSV files are created: one type contains all the gravity wave parameters from all the stations, while the other three types consist of the gravity wave parameters categorized by year, month and station.
 
 R:
