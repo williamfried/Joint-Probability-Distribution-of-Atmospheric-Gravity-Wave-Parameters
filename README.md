@@ -18,10 +18,11 @@ https://www.sparc-climate.org/data-centre/data-access/us-radiosonde/us-upper-air
 
 R:
 1. Define the _path_to_data_ variable in _station_info.R_ to be the same as _path_to_csv_files_. 
-2. Define the _station_names_ variable in _station_info.R_ to be the same as the _stations_ list. Make sure that the radiosonde stations are listed in the same order as they are in the _stations_ list!
-3. Insert the name of the CSV file that contains the data that will be used to construct the joint probability distribution as the argument of the _import_ function in _modeling steps.R_. The name of this CSV file should be one of: _all.csv_, _summer.csv_ and _winter.csv_. 
-4. Run the _explore_ function in _explore.R_ to confirm that the assumptions described in the report in the _Overall Structure_, _Variation by Radiosonde Station_, _Variation by Year_ and _Variation by Month_ sections are accurate. 
-5. Run _modeling_steps.R_. This will perform the following steps:
+2. Make sure that all the R files are stored in the _path_to_data_ folder. 
+3. Define the _station_names_ variable in _station_info.R_ to be the same as the _stations_ list. Make sure that the radiosonde stations are listed in the same order as they are in the _stations_ list!
+4. Insert the name of the CSV file that contains the data that will be used to construct the joint probability distribution as the argument of the _import_ function in _modeling steps.R_. The name of this CSV file should be one of: _all.csv_, _summer.csv_ and _winter.csv_. 
+5. Run the _explore_ function in _explore.R_ to confirm that the assumptions described in the report in the _Overall Structure_, _Variation by Radiosonde Station_, _Variation by Year_ and _Variation by Month_ sections are accurate. 
+6. Run _modeling_steps.R_. This will perform the following steps:
   * Import and organize data from CSV file.
   * Model marginal distributions of seven gravity wave parameters.
   * Construct copula and optimize correlation coefficients using coordinate descent algorithm. (Note: this step can take over an hour to run depending on the amount of data used to build the model.)
