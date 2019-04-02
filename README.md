@@ -23,7 +23,7 @@ R:
 3. Make sure that all the R files are stored in the _path_to_data_ folder. 
 4. Define the _station_names_ variable in _station_info.R_ to be the same as the _stations_ list. Make sure that the radiosonde stations are listed in the same order as they are in the _stations_ list!
 5. Insert the name of the CSV file that contains the data that will be used to construct the joint probability distribution as the argument of the _import_ function in _modeling steps.R_. The name of this CSV file should be one of: _all.csv_, _summer.csv_ and _winter.csv_. 
-6. Run the _explore_ function in _explore.R_ to confirm that the assumptions described in the report in the _Overall Structure_, _Variation by Radiosonde Station_, _Variation by Year_ and _Variation by Month_ sections are accurate. 
+6. Run the _explore_ function in _explore.R_ with all combinations of function arguments to confirm that the assumptions described in the report in the _Overall Structure_, _Variation by Radiosonde Station_, _Variation by Year_ and _Variation by Month_ sections are accurate. 
 7. Run _modeling_steps.R_. This will perform the following steps:
   * Import and organize data from CSV file.
   * Model marginal distributions of seven gravity wave parameters.
