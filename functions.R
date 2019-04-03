@@ -230,7 +230,7 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
   
   AICs = list()
   
-  #max_max = 0.503
+  tw = 0.8
   max_max = 0
   
   # fit normal distribution
@@ -273,7 +273,7 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
         beta_est = fitgennorm$estimate[['beta']]
         
         y = dgnorm(x, mu_est, alpha_est, beta_est)
-        plot(adjust_density(quantity_limited), lwd=lwd_val, ylim=c(0, max(y, adjust_density(quantity)$y) + y_offset, max_max), xlab = unname(param_list[quantity_name]), ylab='density', main='Maximum likelihood distribution: generalized normal', cex.lab=axis_font, cex.main=main_font)#, main=paste('MLE: generalized normal -- corresponding AIC:', toString(round(fitgennorm$aic,0))), cex.lab=axis_font, cex.main=main_font)
+        plot(adjust_density(quantity_limited), lwd=lwd_val, ylim=c(0, max(y, adjust_density(quantity)$y, max_max) + y_offset), xlab = unname(param_list[quantity_name]), ylab='density', main=paste('MLE: generalized normal -- corresponding AIC:', toString(round(fitgennorm$aic,0))), cex.lab=axis_font, cex.main=main_font)
         points(x, y, type="l", lwd=lwd_val, col='red')
         legend('topleft', c('kernel density estimate', 'fitted distribution'), col=c('black', 'red'), seg.len=seg.len_val, lwd=lwd_val, y.intersp=0.4, cex = 1, text.width=0.6)
       }
@@ -296,6 +296,7 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
       y = dlnorm(x, meanlog=avglog, sdlog=std_dev_log)
       plot(adjust_density(quantity_limited), lwd=lwd_val, ylim=c(0, max(y, adjust_density(quantity)$y, max_max) + y_offset), xlab = unname(param_list[quantity_name]), ylab='density', cex.lab=axis_font, cex.main=main_font, main=paste('MLE: lognormal -- corresponding AIC:', toString(round(AIC(lognorm_likelihood[[1]],2),0))))
       points(x, y, type="l", lwd=lwd_val, col='red')
+      legend('topright', c('kernel density estimate', 'fitted distribution'), col=c('black', 'red'), seg.len=seg.len_val, lwd=lwd_val, y.intersp=0.4, cex = 1, text.width=tw)
     }
   }
   
@@ -325,6 +326,7 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
         y = dgamma(x, gamma_shape, rate=gamma_rate)
         plot(adjust_density(quantity_limited), lwd=lwd_val, ylim=c(0, max(y, adjust_density(quantity)$y, max_max) + y_offset), xlab = unname(param_list[quantity_name]), ylab='density', cex.lab=axis_font, cex.main=main_font, main=paste('MLE: gamma -- corresponding AIC:', toString(round(AIC(gamma_likelihood[[1]],2),0))))
         points(x, y, type="l", lwd=lwd_val, col='red')
+        legend('topright', c('kernel density estimate', 'fitted distribution'), col=c('black', 'red'), seg.len=seg.len_val, lwd=lwd_val, y.intersp=0.4, cex = 1, text.width=tw)
       }
   }
   
@@ -354,6 +356,7 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
         y = dweibull(x, weibull_shape, scale=weibull_scale)
         plot(adjust_density(quantity_limited), lwd=lwd_val, ylim=c(0, max(y, adjust_density(quantity)$y, max_max) + y_offset), xlab = unname(param_list[quantity_name]), ylab='density', cex.lab=axis_font, cex.main=main_font, main=paste('MLE: Weibull distribution -- corresponding AIC:', toString(round(AIC(weibull_likelihood[[1]],2),0))))
         points(x, y, type="l", lwd=lwd_val, col='red')
+        legend('topright', c('kernel density estimate', 'fitted distribution'), col=c('black', 'red'), seg.len=seg.len_val, lwd=lwd_val, y.intersp=0.4, cex = 1, text.width=tw)
       }
   }
   
@@ -375,6 +378,7 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
       y = dpareto(x, pareto_loc, shape=pareto_shape)
       plot(adjust_density(quantity_limited), lwd=lwd_val, ylim=c(0, max(y, adjust_density(quantity)$y) + y_offset), xlab = unname(param_list[quantity_name]), ylab='density', main=paste('MLE: Pareto -- corresponding AIC:', toString(round(AIC(pareto_likelihood[[1]],2),0))), cex.lab=axis_font, cex.main=main_font)
       points(x, y, type="l", lwd=lwd_val, col='red')
+      legend('topright', c('kernel density estimate', 'fitted distribution'), col=c('black', 'red'), seg.len=seg.len_val, lwd=lwd_val, y.intersp=0.4, cex = 1, text.width=tw)
     }
     
   }
@@ -394,6 +398,7 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
       y = drayleigh(x, rayleigh_ml)
       plot(adjust_density(quantity_limited), lwd=lwd_val, ylim=c(0, max(y, adjust_density(quantity)$y, max_max) + y_offset), xlab = unname(param_list[quantity_name]), ylab='density', cex.lab=axis_font, cex.main=main_font, main=paste('MLE: Rayleigh -- corresponding AIC:', toString(round(AIC(rayleigh_likelihood[[1]],1),0))))
       points(x, y, type="l", lwd=lwd_val, col='red')
+      legend('topright', c('kernel density estimate', 'fitted distribution'), col=c('black', 'red'), seg.len=seg.len_val, lwd=lwd_val, y.intersp=0.4, cex = 1, text.width=tw)
     }
     
   }
@@ -402,7 +407,7 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
   if ('gumbel' %in% dists)
   {
     fitgumbel = tryCatch(fitdist(quantity, 'gumbel', start=list(a=2, b=2), method='mle'), error=function(cond){return(NA)})
-    if (is.na(fitgumbel))
+    if (is.na(fitgumbel)[[1]])
     {
       AICs['gumbel'] = Inf
     }
@@ -420,6 +425,7 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
         y = dgumbel(x, a_est, b_est)
         plot(adjust_density(quantity_limited), lwd=lwd_val, ylim=c(0, max(y, adjust_density(quantity)$y) + y_offset), xlab = unname(param_list[quantity_name]), ylab='density', main=paste('MLE: Gumble -- corresponding AIC:', toString(round(fitgumbel$aic,0))), cex.lab=axis_font, cex.main=main_font)
         points(x, y, type="l", lwd=lwd_val, col='red')
+        legend('topright', c('kernel density estimate', 'fitted distribution'), col=c('black', 'red'), seg.len=seg.len_val, lwd=lwd_val, y.intersp=0.4, cex = 1, text.width=tw)
       }
     }
   }
@@ -428,7 +434,7 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
   if ('burr' %in% dists)
   {
     fitburr = tryCatch(suppressWarnings(fitdist(quantity, 'burr', start = list(shape1 = 0.3, shape2 = 1, rate = 1), method='mle')), error=function(cond){return(NA)})
-    if (is.na(fitburr))
+    if (is.na(fitburr)[[1]])
     {
       AICs['burr'] = Inf
     }
@@ -446,6 +452,7 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
         y = dburr(x, shape1_est, shape2_est, rate=rate_est)
         plot(adjust_density(quantity_limited), lwd=lwd_val, ylim=c(0, max(y, adjust_density(quantity)$y, max_max) + y_offset), xlab=unname(param_list[quantity_name]), ylab='density', cex.lab=axis_font, cex.main=main_font, main=paste('MLE: Burr -- corresponding AIC:', toString(round(fitburr$aic,0))))
         points(x, y, type="l", lwd=lwd_val, col='red')
+        legend('topright', c('kernel density estimate', 'fitted distribution'), col=c('black', 'red'), seg.len=seg.len_val, lwd=lwd_val, y.intersp=0.4, cex = 1, text.width=tw)
       }
     }
   }
@@ -454,7 +461,7 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
   if ('dagum' %in% dists)
   {
     fitdagum = tryCatch(suppressWarnings(fitdist(quantity, 'dagum', start = list(scale = 2, shape1.a = 5, shape2.p = 0.5), method='mle')), error=function(cond){return(NA)})
-    if (is.na(fitdagum))
+    if (is.na(fitdagum)[[1]])
     {
       AICs['dagum'] = Inf
     }
@@ -472,6 +479,7 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
         y = ddagum(x, scale_est, shape1.a_est, shape2.p_est)
         plot(adjust_density(quantity_limited), lwd=lwd_val, ylim=c(0, max(y, adjust_density(quantity)$y, max_max) + y_offset), xlab = unname(param_list[quantity_name]), ylab='density', cex.lab=axis_font, cex.main=main_font, main=paste('MLE: Dagum distribution -- corresponding AIC:', toString(round(fitdagum$aic,0))))
         points(x, y, type="l", lwd=lwd_val, col='red')
+        legend('topright', c('kernel density estimate', 'fitted distribution'), col=c('black', 'red'), seg.len=seg.len_val, lwd=lwd_val, y.intersp=0.4, cex = 1, text.width=tw)
       }
     }
   }
@@ -480,7 +488,7 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
   if ('invgamma' %in% dists)
   {
     fitinvgamma = tryCatch(fitdist(quantity, 'invgamma', start=list(shape=3, rate=5), method='mle'), error=function(cond){return(NA)})
-    if (is.na(fitinvgamma))
+    if (is.na(fitinvgamma)[[1]])
     {
       AICs['invgamma'] = Inf
     }
@@ -494,9 +502,9 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
         shape_est = fitinvgamma$estimate[['shape']]
         rate_est = fitinvgamma$estimate[['rate']]
         y = dinvgamma(x, shape_est, rate=rate_est)
-        print(max(y))
         plot(adjust_density(quantity_limited), lwd=lwd_val, ylim=c(0, max(y, adjust_density(quantity)$y, max_max) + y_offset), xlab = unname(param_list[quantity_name]), ylab='density', cex.lab=axis_font, cex.main=main_font, main=paste('MLE: Inverse gamma -- corresponding AIC:', toString(round(fitinvgamma$aic,0))))
         points(x, y, type="l", lwd=lwd_val, col='red')
+        legend('topright', c('kernel density estimate', 'fitted distribution'), col=c('black', 'red'), seg.len=seg.len_val, lwd=lwd_val, y.intersp=0.4, cex = 1, text.width=tw)
       }
     }
   }
@@ -505,7 +513,7 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
   if ('genray' %in% dists)
   {
     fitgenray = tryCatch(suppressWarnings(fitdist(quantity, 'genray', start=list(scale=1, shape=1), method='mle')), error=function(cond){return(NA)})
-    if (is.na(fitgenray))
+    if (is.na(fitgenray)[[1]])
     {
       AICs['genray'] = Inf
     }
@@ -522,6 +530,7 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
         y = dgenray(x, scale=scale_est, shape_est)
         plot(adjust_density(quantity_limited), lwd=lwd_val, ylim=c(0, max(y, adjust_density(quantity)$y, max_max) + y_offset), xlab = unname(param_list[quantity_name]), ylab='density', cex.lab=axis_font, cex.main=main_font, main=paste('MLE: generalized Rayleigh -- corresponding AIC:', toString(round(fitgenray$aic,0))))
         points(x, y, type="l", lwd=lwd_val, col='red')
+        legend('topright', c('kernel density estimate', 'fitted distribution'), col=c('black', 'red'), seg.len=seg.len_val, lwd=lwd_val, y.intersp=0.4, cex = 1, text.width=tw)
       }
     }
   }
