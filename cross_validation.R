@@ -1,8 +1,8 @@
+setwd(path_to_data)
 source('station_info.R')
 source('functions.R')
 source('conditional.R')
 library('parallel')
-setwd(path_to_data)
 
 # determine AIC given testing set, training set and the number of intervals
 cross_validation_AIC = function(test_data, train_data, bins)
@@ -19,15 +19,7 @@ cross_validation_AIC = function(test_data, train_data, bins)
   {
     return(NA)
   }
-  #if (is(try(cond_dist_both(U_wavelength_train, V_wavelength_train, freq_shifted_train, render_bins(bins, 'U'), render_bins(bins, 'V'), 'cross-validation')), 'try-error'))
-  #{
-  #  return(NA)
-  #}
-  #else
-  #{
-  #  both_conditional_list_train = cond_dist_both(U_wavelength_train, V_wavelength_train, freq_shifted_train, render_bins(bins, 'U'), render_bins(bins, 'V'), 'cross-validation')
-  #}
-  
+
   # extract testing data
   vert_wavelength_test = as.numeric(as.vector(test_data['vertical_wavelength',]))
   U_amp_test = as.numeric(as.vector(test_data['U_amp',]))

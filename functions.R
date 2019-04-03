@@ -10,8 +10,6 @@ library('MASS')
 source('gnorm_library.R')
 library('mixR')
 library('rootSolve')
-#library('gnorm')
-#options(error=traceback) 
 
 dburr = actuar::dburr
 pburr = actuar::pburr

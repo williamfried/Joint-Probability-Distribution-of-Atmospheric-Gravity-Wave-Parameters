@@ -57,6 +57,7 @@ def energy(filename, lower, upper, interval):
 	hydro_velo = hydro_alt / 12
 	hydro_velo_interpolated = interpolate_array(alt[1:-1], hydro_velo, alt_interval)
 
+	# remove 5 km running average from vertical velocity flunctation profile
 	w_perturb_temp = np.zeros(len(hydro_velo_interpolated))
 	for i in range(len(w_perturb_temp)):
 		lower_end = max(0, i-50)

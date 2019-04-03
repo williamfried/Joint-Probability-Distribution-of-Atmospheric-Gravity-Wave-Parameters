@@ -1,6 +1,6 @@
+setwd(path_to_data)
 source('station_info.R')
 source('explore_functions.R')
-setwd(path_to_data)
 
 # options for each argument of function:
 # category: 'marginal', 'correlation'

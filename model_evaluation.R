@@ -1,3 +1,4 @@
+setwd(path_to_data)
 source('station_info.R')
 source('conditional.R')
 

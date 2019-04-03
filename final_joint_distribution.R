@@ -1,7 +1,7 @@
+setwd(path_to_data)
 source('station_info.R')
 source('functions.R')
 library('gplots')
-setwd(path_to_data)
 
 quantities = c('vertical_wavelength','U_wavelength','V_wavelength', 'freq', 'U_amp','V_amp','T_amp')
 data_list = list(vert_wavelength, U_wavelength, V_wavelength, freq_shifted, U_amp, V_amp, T_amp)
@@ -105,7 +105,7 @@ scatterplots = function(dataset)
   }
 }
 
-sample = sample_joint_distribution(round((dim(data)[2])/200))
+sample = sample_joint_distribution(dim(data)[2])
 marginals(sample)
 scatterplots(sample)
 

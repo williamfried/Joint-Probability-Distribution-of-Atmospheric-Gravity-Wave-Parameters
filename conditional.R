@@ -61,14 +61,14 @@ render_bins = function(bin_num, type)
   {
     U_wavelength_intervals = unname(quantile(U_wavelength, seq(0,1,length=bin_num+1)))
     U_wavelength_intervals[1] = 0
-    U_wavelength_intervals[bin_num+1] = U_wavelength_intervals[bin_num] + 10
+    U_wavelength_intervals[bin_num+1] = U_wavelength_intervals[bin_num] + 10000
     return(U_wavelength_intervals)
   }
   else if (type == 'V')
   {
     V_wavelength_intervals = unname(quantile(V_wavelength, seq(0,1,length=bin_num+1)))
     V_wavelength_intervals[1] = 0
-    V_wavelength_intervals[bin_num+1] = V_wavelength_intervals[bin_num] + 10
+    V_wavelength_intervals[bin_num+1] = V_wavelength_intervals[bin_num] + 10000
     return(V_wavelength_intervals)
   }
   else

@@ -1,6 +1,6 @@
+setwd(path_to_data)
 source('station_info.R')
 source('functions.R')
-setwd(path_to_data)
 
 years = paste(1998:2008)
 months = c('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec')

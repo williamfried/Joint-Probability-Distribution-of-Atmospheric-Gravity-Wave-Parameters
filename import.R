@@ -1,5 +1,5 @@
-source('station_info.R')
 setwd(path_to_data)
+source('station_info.R')
 
 import = function(dataset)
 {

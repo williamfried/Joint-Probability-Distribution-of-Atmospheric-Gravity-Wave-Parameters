@@ -1,6 +1,6 @@
+setwd(path_to_data)
 source('explore_functions.R')
 library('copula')
-setwd(path_to_data)
 
 # Spearman's rho correlation coefficient between all parameters except for frequency 
 U_amp_V_amp = cor(U_amp, V_amp, method='spearman') 

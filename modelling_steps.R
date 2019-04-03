@@ -1,5 +1,4 @@
 source('station_info.R')
-setwd(path_to_data)
 
 # run this script to build model
 
