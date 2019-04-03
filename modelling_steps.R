@@ -4,8 +4,8 @@ setwd(path_to_data)
 # run this script to build model
 
 # import data
-#source('import.R')
-#data = import(dataset)
+source('import.R')
+data = import(dataset)
 
 # fit marginal distributions
 source('fitting.R')

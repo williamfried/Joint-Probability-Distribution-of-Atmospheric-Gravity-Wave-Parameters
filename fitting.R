@@ -4,9 +4,8 @@ source('functions.R')
 all_dists = c('gamma', 'weibull', 'lnorm', 'rayleigh', 'gumbel', 'burr', 'dagum', 'invgamma', 'genray', 'generalized_normal')
 
 # determine distribution with lowest AIC for all 7 gravity wave parameters
-U_amp_fit = fit_dist(U_amp, T, F, F, all_dists, 'U_amp')
-V_amp_fit = fit_dist(V_amp, T, F, F, all_dists, 'V_amp')
-stop(1)
+U_amp_fit = fit_dist(U_amp, F, F, F, all_dists, 'U_amp')
+V_amp_fit = fit_dist(V_amp, F, F, F, all_dists, 'V_amp')
 T_amp_fit = fit_dist(T_amp, F, F, F, all_dists, 'T_amp')
 freq_fit = fit_dist(freq_shifted, F, F, F, all_dists, 'freq')
 U_wavelength_fit = fit_dist(U_wavelength, F, F, F, all_dists, 'U_wavelength')
