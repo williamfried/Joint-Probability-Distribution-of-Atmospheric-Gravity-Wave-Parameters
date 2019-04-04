@@ -21,9 +21,10 @@ R:
 1. Ensure that the following libraries are installed in RStudio: _parallel_, _copula_, _actuar_, _VGAM_, _rmutil_, _invgamma_, _extraDistr_, _fitdistrplus_, _MASS_, _mixR_, _rootSolve_, _gplots_, _stringr_ and _dplyr_.
 2. Define the _path_to_data_ variable in _station_info.R_ to be the same as _path_to_csv_files_. 
 3. Define the _station_names_ variable in _station_info.R_ to be the same as the _stations_ list. Make sure that the radiosonde stations are listed in the same order as they are in the _stations_ list!
-4. Define the _dataset_ variable to be the name of the CSV file that contains the data that will be used to construct the joint probability distribution. The name of this CSV file should be one of: _all.csv_, _summer.csv_ and _winter.csv_. 
-5. Run the _explore_ function in _explore.R_ for all combinations of function arguments to confirm that the assumptions described in the report in the _Overall Structure_, _Variation by Radiosonde Station_, _Variation by Year_ and _Variation by Month_ sections are valid. 
-6. Run _modeling_steps.R_. This will perform the following steps:
+4. Define the _dataset_ variable in _station_info.R_ to be the name of the CSV file that contains the data that will be used to construct the joint probability distribution. The name of this CSV file should be one of: _all.csv_, _summer.csv_ and _winter.csv_. 
+5. Run _station_info.R_. 
+6. Run the _explore_ function in _explore.R_ for all combinations of function arguments to confirm that the assumptions described in the report in the _Overall Structure_, _Variation by Radiosonde Station_, _Variation by Year_ and _Variation by Month_ sections are valid. 
+7. Run _modeling_steps.R_. This will perform the following steps:
   * Import and organize the data from _dataset_.
   * Model the marginal distributions of the seven gravity wave parameters.
   * Construct a copula and optimize the correlation coefficients using a coordinate descent algorithm. (Note: this step can take over an hour to run depending on the amount of data used to build the model.)
