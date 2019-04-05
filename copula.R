@@ -46,7 +46,7 @@ generate_copula = function(copula_list)
                                 U_wave_V_wave+copula_list[['U_wave_V_wave']], 1, V_wave_vert+copula_list[['V_wave_vert']], U_amp_vert+copula_list[['U_amp_vert']], V_amp_vert+copula_list[['V_amp_vert']], T_amp_vert+copula_list[['T_amp_vert']], U_wave_vert+copula_list[['U_wave_vert']], V_wave_vert+copula_list[['V_wave_vert']], 1), ncol=6) 
   
   normal_copula = normalCopula(param=P2p(correlation_matrix), dim=ncol(correlation_matrix), dispstr='un')
-  cop_dist = mvdc(copula=normal_copula, margins=c(names(U_amp_fit), names(V_amp_fit), names(T_amp_fit), names(U_wavelength_fit), names(V_wavelength_fit), 'gnorm'),
+  cop_dist = mvdc(copula=normal_copula, margins=c(names(U_amp_fit), names(V_amp_fit), names(T_amp_fit), names(U_wavelength_fit), names(V_wavelength_fit), dist_name(names(vert_wavelength_fit))),
                   paramMargins=list(U_amp_MLE, V_amp_MLE, T_amp_MLE, U_wavelength_MLE, V_wavelength_MLE, vert_wavelength_MLE))
 }
 
