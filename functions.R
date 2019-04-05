@@ -98,6 +98,18 @@ adjust_density = function(data)
   return(d)
 }
 
+dist_name = function(dist)
+{
+  if (dist == 'generalized_normal')
+  {
+    return('gnorm')
+  }
+  else
+  {
+    return(dist)
+  }
+}
+
 # evalulate inverse CDF given standard uniform random variable
 solve_for_zero = function(random, CDF, upper_zero, lower_zero)
 {
