@@ -8,7 +8,7 @@ def extract(filename, clean):
 	# rows before first combination of two rows into one
 	f = open(filename,'r')
 	try:
-		data0 = np.genfromtxt((" ".join(ln.split()[3:17]) for ln in f if len(ln.split()) == 23))#, skip_header = 3)
+		data0 = np.genfromtxt((" ".join(ln.split()[3:17]) for ln in f if len(ln.split()) == 23))
 	except:
 		return('short')
 
