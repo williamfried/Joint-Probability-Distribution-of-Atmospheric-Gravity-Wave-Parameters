@@ -620,7 +620,7 @@ fit_dist = function(quantity, plots, all, best, dists, quantity_name)
     # plot PDF and CDF corresponding to polynomial fit
     if (plots)
     {
-      plot(adjust_density(quantity), lwd=lwd_val, col='black', ylim=c(0,max(density_fit)+0.1), xlab=unname(param_list[quantity_name]), ylab='density', cex.lab=axis_font, cex.main=main_font, main='Polynomial fit')#, main=paste('Polynomial -- corresponding AIC: ', toString(round(AIC(tot, 2),0))), cex.lab=axis_font, cex.main=main_font)
+      plot(adjust_density(quantity), lwd=lwd_val, col='black', ylim=c(0,max(density_fit)+0.1), xlab=unname(param_list[quantity_name]), ylab='density', cex.lab=axis_font, cex.main=main_font, main='Polynomial fit')
       par(new=T)
       lines(x_data, density_fit, lwd=lwd_val, col='red')
       legend('topright', c('kernel density estimate', 'fitted polynomial'), col=c('black', 'red'), seg.len=seg.len_val, lwd=lwd_val, y.intersp=0.4, cex = 1, text.width=1.5)
