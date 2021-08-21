@@ -1,9 +1,12 @@
 The final report can be found [here](https://github.com/williamfried/Joint-Probability-Distribution-of-Atmospheric-Gravity-Wave-Parameters/blob/master/final%20report.pdf).
 
+_________
+
 Abstract: 
 
 To gain additional time in the fight against climate change, atmospheric scientists are ex- ploring the utility of releasing aerosol particles into the lower stratosphere to reflect incoming solar radiation. Unfortunately, these particles may simultaneously lead to the depletion of ozone levels and pose other environmental threats. To better understand these risks, scien- tists have developed an atmospheric transport and chemistry model to capture how these particles move around once released. However, in its current form, the model does not ac- count for atmospheric gravity waves, which strongly influence how these particles move and interact with their surroundings. This project addresses this deficiency by first inferring these gravity wave characteristics from 11 years of raw radiosonde data and then applying various statistical and machine learning techniques to construct a joint probability distribution on the seven parameters associated with atmospheric gravity waves.
 
+_________
 
 Outlined below are the steps needed to construct the joint probability distribution of the seven atmospheric gravity wave parameters.
 
