@@ -45,5 +45,5 @@ R:
     1. Models all 7 gravity wave parameters independently of each other.
     2. Models the joint distribution of all gravity wave parameters except for frequency using a copula and independently models frequency. 
     3. Models the joint distribution of all gravity wave parameters except for frequency using a copula and models the frequency by conditioning on the zonal and meridional wavelengths. 
-  * Draw a sample of a given size from the joint probability distribution and compare these samples to the empirical marginal distributions and correlation stuctures of the inferred gravity wave paramters. This sample is then stored in a CSV file where it can be analyzed to gain insight into the dynamics of the lower stratosphere.
+  * Draw a sample of a given size from the joint probability distribution and compare these samples to the empirical marginal distributions and correlation stuctures of the inferred gravity wave parameters. This sample is then stored in a CSV file where it can be analyzed to gain insight into the dynamics of the lower stratosphere.
 
